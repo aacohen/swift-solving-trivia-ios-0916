@@ -17,22 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func solveTrivia(_ trivia: [String : String]) -> String {
         _ = 0
         for (key, value) in trivia {
-        let charactersInKeyString = Array(key.lowercased().characters)
-           let charactersInValueString = Array(value.lowercased().characters)
+            let charactersInKeyString = Array(key.lowercased().characters)
+            let charactersInValueString = Array(value.lowercased().characters)
             for (index , _) in charactersInValueString.enumerated() {
-            if charactersInKeyString.contains(charactersInValueString[index])  {
-                _ = 1
-                print(charactersInValueString)
+                
+                for (index1, _) in charactersInKeyString.enumerated(){
+                    if charactersInValueString[index] == charactersInKeyString[index1]  {
+                        break
+                    }
+                }
+                
             }
-            else {
-                return (key)
-            }
-        
+            return (key)
+        }
+        return ("")
     }
-    
-}
-         return "Nothing Matches"
-}
-
-
 }
