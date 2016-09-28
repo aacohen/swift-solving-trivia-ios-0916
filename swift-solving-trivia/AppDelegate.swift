@@ -15,21 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func solveTrivia(_ trivia: [String : String]) -> String {
-        _ = 0
+        
         for (key, value) in trivia {
+            var charactersAreUnique = true
             let charactersInKeyString = Array(key.lowercased().characters)
             let charactersInValueString = Array(value.lowercased().characters)
-            for (index , _) in charactersInValueString.enumerated() {
-                
-                for (index1, _) in charactersInKeyString.enumerated(){
+            for (index , capitalCharacter) in charactersInValueString.enumerated() {
+                print("now comparing \(capitalCharacter): ")
+                for (index1, stateCharacter) in charactersInKeyString.enumerated(){
+                    print("comparing with \(stateCharacter)")
                     if charactersInValueString[index] == charactersInKeyString[index1]  {
-                        break
+                        charactersAreUnique = false
                     }
+                    
                 }
                 
             }
-            return (key)
+            if charactersAreUnique {
+                return key
+            }
+            
         }
-        return ("")
+        return ("none are unique")
     }
 }
